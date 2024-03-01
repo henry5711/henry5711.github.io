@@ -658,8 +658,9 @@ section .container {
 .services .icon-box {
   text-align: center;
   background: rgba(204, 204, 204, 0.1);
-  padding: 80px 20px;
+  padding: 60px 20px;
   transition: all ease-in-out 0.3s;
+  min-height: 350px;
 }
 
 .services .icon-box .icon {
@@ -1177,4 +1178,67 @@ section .container {
 
 .credits a:hover {
   color: #fff;
+}
+
+/* Estilos para ambos checkboxes, original y clonado */
+.switch {
+  display: inline-block;
+  position: relative;
+  margin-right: 5px;
+  margin-bottom: 0px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 15px;
+  background-color: #3f3f3f86;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #18d26e;
+}
+
+input:checked + .slider:before {
+  transform: translateX(15px);
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  #checkbox-container {
+      display: none; /* Ocultar el switch original en dispositivos móviles */
+      margin-top: 0;
+  }
+  #space{
+    padding: 4px;
+  }
+}
+
+#cloned-checkbox-container{
+  margin-left: 20px;
+  margin-bottom: 0px;
+}
+
+#footer{
+  color: white;
 }

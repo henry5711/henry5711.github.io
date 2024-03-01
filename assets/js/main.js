@@ -73,6 +73,8 @@
     var $mobile_nav = $('.nav-menu').clone().prop({
       class: 'mobile-nav d-lg-none'
     });
+    
+    
     $('body').append($mobile_nav);
     $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>');
     $('body').append('<div class="mobile-nav-overly"></div>');
@@ -82,6 +84,23 @@
       $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
       $('.mobile-nav-overly').toggle();
     });
+
+    $(document).ready(function() {
+      // Verificar si es un dispositivo móvil
+      if ($(window).width() <= 768) { // Ajusta este valor según tu diseño responsivo
+        // Agregar el evento de cambio solo para dispositivos móviles
+        $('#checkbox-idioma').on('change', function() {
+            var isChecked = $(this).prop('checked');
+            if (isChecked) {
+                $('#checkbox-text').text('Es');
+                cambiarIdioma("en"); // Llama a la función cambiarIdioma con el idioma inglés
+            } else {
+                $('#checkbox-text').text('Eng');
+                cambiarIdioma("es"); // Llama a la función cambiarIdioma con el idioma español
+            }
+        });
+    }
+  });
 
     $(document).click(function(e) {
       var container = $(".mobile-nav, .mobile-nav-toggle");
@@ -97,11 +116,13 @@
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
 
+
   // jQuery counterUp
   $('[data-toggle="counter-up"]').counterUp({
     delay: 10,
     time: 1000
   });
+
 
   // Skills section
   $('.skills-content').waypoint(function() {
@@ -116,7 +137,7 @@
   $(".testimonials-carousel").owlCarousel({
     autoplay: true,
     dots: true,
-    loop: true,
+    loop: false,
     autoplayTimeout:10000,
     responsive: {
       0: {
